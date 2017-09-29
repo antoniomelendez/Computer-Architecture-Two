@@ -1,0 +1,56 @@
+1. The minimum seek time for an HDD is 9msec, and the maximum seek time is 90msec. 
+The block size of this HDD is 4KB. How long on average does it take to read 100MB of data?
+
+According to wikipedia the average seek time fore a desktop hdd is 9ms on average and 12ms for mobile.
+The block size is 4kb and we are reading 100mb of data.
+Convert 100mb to kb = 100000kb.
+divide the data by the block.
+100000kb / 4kb = 25000
+find the average time it will take to read 25000kb
+25000 * (9 + 4.16ms) =  329000ms => 329 seconds for desktop
+25000 + (9 + 4.16ms) =  25013.16ms => 25 seconds for desktop
+
+
+2. Describe a TCP/IP packet in detail. Describe the header, how many bytes it is, 
+and which components it contains. What data can come after the header?
+
+TCP/IP is the basic communication language or protocol of the Internet. The TCP/IP packet is used to deliver / send messages over the internet. 
+The original message is broken up and sent over the internet in individual packets. These packets have headers which help the receiving end
+know in which order the packets need to go to form the original message.
+
+A TCP/IP packet is considered the basic unit of of network transmission, and they contain two 'parts' the Header and the Data. The header includes many pieces of data such as:
+
+  Which protocol is being used (IPv4 or IPv6)
+  Length of the packet
+  How many packets are being used to send the total amount of data
+  The source and the destination of the packet
+  A checksum (used in calculating corrections)
+  The 'Time to Live' (TTL), or how many times the packet can be passed before timing out
+
+The minimum size for a TCP/IP header is 20 bytes and the maximum is 60 bytes. The data that then follows the header is considered to be the 'Payload data' which is the actual 
+data of the packet and not including any meta-data.
+
+The absolute limitation on TCP packet size is 64K (65535 bytes), but in practicality this is far larger than the size of any packet you will see, because the lower layers (e.g. ethernet) have lower packet sizes.
+
+The MTU (Maximum Transmission Unit) for Ethernet, for instance, is 1500 bytes. Some types of networks (like Token Ring) have larger MTUs, and some types have smaller MTUs, but the values are fixed for each physical technology.
+
+3. How does the network protocol guarantee that a TCP/IP packet is complete after transmission?
+
+The network protocol guarantees that a packet is complete after submission by using a technique referred to as:
+
+  Postive acknowledgement with re-transmission: This technique as the receiver respond with an message acknowledging the data has been received as it receives the data. If the sender doesn't receive an acknowlegdement before their timer expires they resend the packet
+
+
+
+4. What is the difference between TCP and IP?
+
+TCP/IP is a two-layer program. The higher layer, Transmission Control Protocol, manages the assembling of a message or file into smaller packets 
+that are transmitted over the Internet and received by a TCP layer that reassembles the packets into the original message. The lower layer, 
+Internet Protocol, handles the address part of each packet so that it gets to the right destination.
+
+
+5. Why is 3d performance so much higher with a graphics card than without? 
+Modern CPUs are extremely fast, what is limiting their performance?
+
+I think the simplest answer for this is just that with a graphics card you get more power. The graphics card is able to direct 100% of it's processing at handling the 3d performance, whereas with just a CPU it can only allocate so much of itself to graphic computing. It's worth noting that some CPU's don't even have onchip graphics, and they assume that you'll have discrete GPU.
+GPUs are more optimized for parallel number crunching, since that's what graphics processing entails. CPUs aren't as optimized for this as GPUs, but they still do fine for the most part.
